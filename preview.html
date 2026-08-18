@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para Mati ♡</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    color: #5b3d3d;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            #fff7dc 0%,
+            #f9e7c8 38%,
+            #e9c7b5 100%
+        );
+}
+
+/* ================================
+   LLUVIA DE POOKIE
+================================ */
+
+#rain {
+    position: fixed;
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.pookie {
+    position: absolute;
+
+    top: -100px;
+
+    color: rgba(110, 76, 76, 0.08);
+
+    font-size: clamp(16px, 2vw, 28px);
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    user-select: none;
+
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+
+    from {
+        transform:
+            translateY(-120px)
+            rotate(var(--rotation));
+    }
+
+    to {
+        transform:
+            translateY(115vh)
+            rotate(var(--rotation));
+    }
+}
+
+/* ================================
+   CONTENEDOR
+================================ */
+
+#app {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px;
+
+    z-index: 2;
+}
+
+/* ================================
+   TARJETA
+================================ */
+
+.card {
+    width: min(850px, 94vw);
+
+    min-height: 390px;
+
+    padding: 55px 45px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    border-radius: 35px;
+
+    background:
+        rgba(255, 251, 240, 0.67);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 25px 80px
+        rgba(83, 49, 49, 0.13);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.content {
+    width: 100%;
+
+    animation: appear 0.7s ease;
+}
+
+@keyframes appear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+/* ================================
+   INICIO
+================================ */
+
+.small-title {
+    margin-bottom: 10px;
+
+    font-size: 18px;
+
+    letter-spacing: 3px;
+
+    opacity: 0.75;
+}
+
+h1 {
+    margin: 0;
+
+    font-size:
+        clamp(42px, 8vw, 76px);
+
+    letter-spacing: -2px;
+}
+
+.question {
+    margin-top: 22px;
+
+    font-size:
+        clamp(19px, 3vw, 27px);
+
+    line-height: 1.5;
+}
+
+.question strong {
+    display: block;
+
+    margin-top: 8px;
+
+    font-size:
+        clamp(28px, 5vw, 40px);
+}
+
+.buttons {
+    margin-top: 35px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 18px;
+}
+
+button {
+    border: none;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.main-button {
+    min-width: 135px;
+
+    padding: 14px 28px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,255,255,0.75);
+
+    color: #684747;
+
+    font-size: 17px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(92,55,55,0.12);
+}
+
+.main-button:hover {
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(92,55,55,0.18);
+}
+
+.yes {
+    background: #f2c7c7;
+}
+
+.no {
+    background: #eee0c9;
+}
+
+/* ================================
+   RESPUESTA
+================================ */
+
+.answer {
+    font-size:
+        clamp(25px, 4vw, 38px);
+
+    line-height: 1.5;
+
+    margin-bottom: 35px;
+}
+
+/* ================================
+   CAJA
+================================ */
+
+.gift-title {
+    font-size:
+        clamp(24px, 4vw, 31px);
+
+    margin-bottom: 40px;
+}
+
+.gift {
+    position: relative;
+
+    width: 190px;
+    height: 160px;
+
+    margin: auto;
+
+    cursor: pointer;
+
+    filter:
+        drop-shadow(
+            0 20px 20px
+            rgba(90,50,50,0.15)
+        );
+
+    transition:
+        transform 0.3s ease;
+}
+
+.gift:hover {
+    transform:
+        translateY(-8px)
+        scale(1.03);
+}
+
+.gift-box {
+    position: absolute;
+
+    bottom: 0;
+    left: 15px;
+
+    width: 160px;
+    height: 115px;
+
+    background: #d99b91;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+}
+
+.gift-box::after {
+    content: "";
+
+    position: absolute;
+
+    left: 68px;
+    top: 0;
+
+    width: 25px;
+    height: 100%;
+
+    background: #f3d49e;
+}
+
+.gift-lid {
+    position: absolute;
+
+    left: 5px;
+    top: 28px;
+
+    width: 180px;
+    height: 35px;
+
+    background: #c9867f;
+
+    border-radius: 8px;
+
+    z-index: 3;
+
+    transition:
+        transform 0.9s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+.gift-lid::after {
+    content: "";
+
+    position: absolute;
+
+    left: 78px;
+    top: 0;
+
+    width: 25px;
+    height: 35px;
+
+    background: #f3d49e;
+}
+
+.bow-left,
+.bow-right {
+    position: absolute;
+
+    top: 2px;
+
+    width: 48px;
+    height: 35px;
+
+    background: #f3d49e;
+
+    border-radius: 50%;
+
+    z-index: 4;
+}
+
+.bow-left {
+    left: 48px;
+
+    transform:
+        rotate(25deg);
+}
+
+.bow-right {
+    right: 48px;
+
+    transform:
+        rotate(-25deg);
+}
+
+.gift.open .gift-lid {
+    transform:
+        translateY(-75px)
+        rotate(-8deg);
+}
+
+.gift-hint {
+    margin-top: 28px;
+
+    font-size: 15px;
+
+    opacity: 0.65;
+}
+
+/* ================================
+   CARTA
+================================ */
+
+.letter-wrapper {
+    max-height: 72vh;
+
+    overflow-y: auto;
+
+    padding: 5px 15px;
+
+    scrollbar-width: thin;
+}
+
+.letter-title {
+    margin-bottom: 30px;
+
+    font-size:
+        clamp(29px, 5vw, 43px);
+
+    animation:
+        letterAppear 1s ease;
+}
+
+.letter-text {
+    font-size:
+        clamp(16px, 2vw, 19px);
+
+    line-height: 1.9;
+
+    white-space: pre-line;
+
+    text-align: center;
+
+    animation:
+        letterAppear 1.5s ease;
+}
+
+@keyframes letterAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px)
+            scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+.letter-ending {
+    margin-top: 28px;
+
+    font-size: 32px;
+
+    animation:
+        heartAppear 2s ease;
+}
+
+@keyframes heartAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+}
+
+/* ================================
+   FINAL
+================================ */
+
+.final-title {
+    font-size:
+        clamp(40px, 8vw, 70px);
+
+    margin-bottom: 25px;
+}
+
+.final-text {
+    font-size:
+        clamp(18px, 3vw, 25px);
+
+    line-height: 1.7;
+}
+
+.final-heart {
+    margin-bottom: 15px;
+
+    font-size: 70px;
+
+    animation:
+        heartbeat 1.4s infinite;
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.18);
+    }
+}
+
+/* ================================
+   CORAZONES
+================================ */
+
+.heart {
+    position: fixed;
+
+    pointer-events: none;
+
+    z-index: 20;
+
+    color: #9d6868;
+
+    font-size: 20px;
+
+    animation:
+        heartUp 2.5s ease-out forwards;
+}
+
+@keyframes heartUp {
+
+    0% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(0.5);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translateY(-300px)
+            scale(1.4)
+            rotate(20deg);
+    }
+}
+
+/* ================================
+   CELULAR
+================================ */
+
+@media (max-width: 600px) {
+
+    #app {
+        padding: 15px;
+    }
+
+    .card {
+        min-height: 360px;
+
+        padding:
+            40px 22px;
+    }
+
+    .buttons {
+        gap: 10px;
+    }
+
+    .letter-wrapper {
+        max-height: 68vh;
+    }
+
+    .letter-text {
+        line-height: 1.75;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<div id="rain"></div>
+
+
+<div id="app">
+
+    <div class="card">
+
+        <div
+            class="content"
+            id="content"
+        >
+
+            <!-- INICIO -->
+
+            <div class="small-title">
+                MATI,
+            </div>
+
+            <h1>
+                holita, precioso ♡
+            </h1>
+
+            <div class="question">
+
+                Te daré algo pero...
+
+                <strong>
+                    ¿Me amas?
+                </strong>
+
+            </div>
+
+            <div class="buttons">
+
+                <button
+                    class="main-button yes"
+                    onclick="answer('yes')"
+                >
+                    Sí ♡
+                </button>
+
+                <button
+                    class="main-button no"
+                    onclick="answer('no')"
+                >
+                    No
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* ================================
+   LLUVIA DE POOKIE
+================================ */
+
+const rain =
+    document.getElementById("rain");
+
+const words = [
+    "pookie",
+    "pookie",
+    "pookie",
+    "pookie ♡",
+    "pookie",
+    "♡ pookie",
+    "pookie"
+];
+
+for (
+    let i = 0;
+    i < 45;
+    i++
+) {
+
+    const word =
+        document.createElement("span");
+
+    word.className =
+        "pookie";
+
+    word.textContent =
+        words[
+            Math.floor(
+                Math.random()
+                * words.length
+            )
+        ];
+
+    word.style.left =
+        Math.random() * 100 + "%";
+
+    word.style.animationDuration =
+        (
+            7 +
+            Math.random() * 11
+        ) + "s";
+
+    word.style.animationDelay =
+        (
+            -Math.random() * 16
+        ) + "s";
+
+    word.style.setProperty(
+        "--rotation",
+        (
+            Math.random() * 40 - 20
+        ) + "deg"
+    );
+
+    rain.appendChild(word);
+}
+
+
+/* ================================
+   ELEMENTO PRINCIPAL
+================================ */
+
+const content =
+    document.getElementById("content");
+
+
+/* ================================
+   CAMBIAR CONTENIDO
+================================ */
+
+function changeContent(html) {
+
+    content.style.opacity = "0";
+
+    content.style.transform =
+        "translateY(12px)";
+
+    setTimeout(() => {
+
+        content.innerHTML = html;
+
+        content.style.opacity = "1";
+
+        content.style.transform =
+            "translateY(0)";
+
+    }, 450);
+}
+
+
+/* ================================
+   SÍ / NO
+================================ */
+
+function answer(type) {
+
+    let message;
+
+    if (type === "yes") {
+
+        message =
+            "QUE, la real yo no sabrá esto...";
+
+    } else {
+
+        message =
+            "Te entregaré mi alma para que me ames~";
+
+    }
+
+    changeContent(`
+
+        <div class="answer">
+            ${message}
+        </div>
+
+        <button
+            class="main-button"
+            onclick="showGift()"
+        >
+            Continuar →
+        </button>
+
+    `);
+}
+
+
+/* ================================
+   MOSTRAR CAJA
+================================ */
+
+function showGift() {
+
+    changeContent(`
+
+        <div class="gift-title">
+            Tengo algo para ti...
+        </div>
+
+        <div
+            class="gift"
+            id="gift"
+            onclick="openGift()"
+        >
+
+            <div class="bow-left"></div>
+
+            <div class="bow-right"></div>
+
+            <div class="gift-lid"></div>
+
+            <div class="gift-box"></div>
+
+        </div>
+
+        <div class="gift-hint">
+            toca la cajita ♡
+        </div>
+
+    `);
+}
+
+
+/* ================================
+   ABRIR CAJA
+================================ */
+
+function openGift() {
+
+    const gift =
+        document.getElementById("gift");
+
+    if (
+        gift.classList.contains("open")
+    ) {
+        return;
+    }
+
+    gift.classList.add("open");
+
+    createHearts(25);
+
+    setTimeout(() => {
+
+        showLetter();
+
+    }, 1000);
+}
+
+
+/* ================================
+   CARTA
+================================ */
+
+const letter = `Feliz cumpleaños, Mati, estoy tan feliz de que pueda estar un año más en tu cumpleaños, de que hablemos y me permitas ser... parte de tu vida(?)
+
+¿Ya te he dicho que el número 18 se te ve demasiado atractivo? Me encantas.
+
+Espero hoy sea un precioso día para ti, que te la pases increíble y nada malo pase hoy.
+
+Te amo, cariño. Felicidades <3
+
+
+Disculpa que no sea algo tan grande, pero lo hago con todo mi amor para ti, con una sonrisa en mi cara y algo de nervios por saber tu reacción.
+
+Mi solecito, eres lo que más he amado en esta vida, todo lo que hemos pasado lo guardo en mi casita donde se habita mi alma, amándote cada día más.
+
+¿Cómo te lo hago entender?
+
+¿Cómo puedo simular arrodillarme ante ti y poner tu mano en mi mejilla para decirte lo mucho que estoy enamorada de ti?
+
+Lamento todos mis errores pero me haces entender lo que quieres y necesitas de mí, y mientras sigas dándome palabra y permaneciendo conmigo, nunca te va a faltar amor, nunca te va a faltar una Maly, una Maly que está perdida en tus ojos, en tu toque y tu dulzura de voz.
+
+Me encantas, me fascinas, me gustas mucho.
+
+Se aproximan 2 años desde que comenzamos esta locura y aunque no seamos pareja, yo conservo todo lo malo y bueno de nosotros.
+
+
+Si algún día me permites amarte de nuevo, te cuidaré como nunca nadie te cuidará, más que a cualquier cosa.
+
+Siento haberte dicho esto antes y no haberlo cumplido.
+
+Respetaré tu desconfianza y soy capaz de esperarte toda una vida mientras sigas disponible para crear una vida conmigo.
+
+
+Me gustas muchísimo.
+
+Daré alma, cuerpo, sangre y mi religión por tener tu amor, por tener tu cariño y aprecio de vuelta.
+
+No me creas mañana, pero créeme hoy.
+
+Siénteme de rodillas diciéndote todo esto.
+
+Confía en mí por hoy, solo unos minutos.
+
+Solo siente mi amor por ti cerca, mi obsesión contigo, mi dulce esperanza.
+
+
+Tu voz es lo más precioso y único que podría encontrar nunca.
+
+No hace falta que seas el hombre más inteligente, ni popular y mucho menos guapo (obvio eres todo eso), pero si no lo fueses te amaría de todas formas.
+
+Te amaré en las buenas y en las malas, en la pobreza y en la enfermedad, hasta que mi corazón deje de sentir y mi alma se dedique a amarte hasta su existencia.`;
+
+
+/* ================================
+   MOSTRAR CARTA
+================================ */
+
+function showLetter() {
+
+    changeContent(`
+
+        <div class="letter-title">
+            Para ti, Mati ♡
+        </div>
+
+        <div class="letter-wrapper">
+
+            <div class="letter-text">
+                ${letter}
+            </div>
+
+            <div class="letter-ending">
+                ♡
+            </div>
+
+        </div>
+
+    `);
+
+    /*
+       Después de leer la carta,
+       aparece el final.
+    */
+
+    setTimeout(
+        showFinal,
+        30000
+    );
+}
+
+
+/* ================================
+   FINAL
+================================ */
+
+function showFinal() {
+
+    createHearts(40);
+
+    changeContent(`
+
+        <div class="final-heart">
+            ♡
+        </div>
+
+        <div class="final-title">
+            Feliz cumpleaños, Mati
+        </div>
+
+        <div class="final-text">
+
+            Gracias por dejarme compartir
+            otro cumpleaños contigo.
+
+            <br>
+
+            Espero que este nuevo año
+            de tu vida sea precioso.
+
+            <br><br>
+
+            <strong>
+                Te quiero muchísimo,
+                mi solecito. ♡
+            </strong>
+
+        </div>
+
+    `);
+}
+
+
+/* ================================
+   CORAZONES
+================================ */
+
+function createHearts(amount) {
+
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
+
+        setTimeout(() => {
+
+            const heart =
+                document.createElement(
+                    "div"
+                );
+
+            heart.className =
+                "heart";
+
+            heart.textContent =
+                [
+                    "♡",
+                    "♥",
+                    "❤",
+                    "✦"
+                ][
+                    Math.floor(
+                        Math.random() * 4
+                    )
+                ];
+
+            heart.style.left =
+                (
+                    30 +
+                    Math.random() * 40
+                ) + "%";
+
+            heart.style.top =
+                (
+                    45 +
+                    Math.random() * 15
+                ) + "%";
+
+            heart.style.fontSize =
+                (
+                    15 +
+                    Math.random() * 25
+                ) + "px";
+
+            document.body.appendChild(
+                heart
+            );
+
+            setTimeout(() => {
+
+                heart.remove();
+
+            }, 2600);
+
+        }, i * 60);
+    }
+}
+
+</script>
+
+</body>
+</html>
